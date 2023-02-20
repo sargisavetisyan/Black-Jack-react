@@ -1,0 +1,440 @@
+.blackgack {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 63px);
+}
+
+.blackgack img {
+    width: 100%;
+    height: 100%;
+}
+
+.play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    border-radius: 10px;
+    padding: 15px 30px;
+    min-width: 200px;
+    font-size: clamp(16px, 20px, 22px);
+    font-weight: 500;
+    color: #312F35;
+    background-color: #F7CA18 !important;
+    transition: all 0.7s ease 0s;
+}
+
+.play:hover {
+    box-shadow: 2px 2px white, 4px 4px #C76637;
+}
+
+/* **************************** */
+
+.room {
+    width: 100%;
+    height: 100%;
+    background: url(../../images/blackjackroom-2.png) no-repeat;
+    background-size: cover;
+}
+
+.exit {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px;
+}
+
+.exit button {
+    border: 2px solid #C0A86F;
+    border-radius: 50px;
+    padding: 5px;
+    margin-right: 10px;
+    min-width: 50px;
+    color: #fff;
+    transition: all 0.5s ease 0s;
+}
+
+.sound {
+    background: #F7CA18;
+}
+
+.sound:hover {
+    background: #a79038;
+}
+
+.exitDoor {
+    background: #f73918;
+}
+
+.exitDoor:hover {
+    background: #b62910;
+}
+
+/* ***************************************************** */
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100% - 60px);
+}
+
+.dealer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 40%
+}
+
+.card {
+    position: absolute;
+    top: 40px;
+    left: 770px;
+    width: 95px;
+    height: 146px;
+    border-radius: 5px;
+    margin-top: 30px;
+    transform-origin: center center;
+    transform: scale(1.2)rotateX(30deg) rotate(290deg);
+    animation: cardLoadingPlayer 0.3s linear 0s;
+}
+
+.twoCard {
+    position: absolute;
+    top: 0px;
+    left: 666px;
+    width: 95px;
+    height: 146px;
+    border-radius: 5px;
+    margin-top: 30px;
+    transform-origin: center center;
+    transform: scale(1.2)rotateX(30deg) rotate(290deg);
+    animation: cardLoadingPlayer 0.3s linear 0s;
+    animation-iteration-count: 2;
+}
+
+.twoCardCpu {
+    position: absolute;
+    top: 0px;
+    left: 666px;
+    width: 95px;
+    height: 146px;
+    border-radius: 5px;
+    margin-top: 30px;
+    transform-origin: center center;
+    transform: scale(1.2)rotateX(30deg) rotate(290deg);
+    animation: cardLoadingCpu 0.3s linear 0s;
+    animation-iteration-count: 2;
+}
+
+.cardCpu {
+    position: absolute;
+    top: 40px;
+    left: 770px;
+    width: 95px;
+    height: 146px;
+    border-radius: 5px;
+    margin-top: 30px;
+    transform-origin: center center;
+    transform: scale(1.2)rotateX(30deg) rotate(290deg);
+    animation: cardLoadingCpu 0.3s linear 0s;
+}
+
+.imgDealer {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: none;
+    object-position: -25px -25px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+@keyframes cardLoadingPlayer {
+    25% {
+        top: 135px;
+        left: 592.5px;
+        transform: rotateZ(60deg);
+    }
+
+    50% {
+        top: 230px;
+        left: 415px;
+        transform: rotateZ(120deg);
+    }
+
+    75% {
+        top: 325px;
+        left: 237.5px;
+        transform: rotateZ(180deg);
+    }
+
+    100% {
+        top: 420px;
+        left: 60px;
+        transform: rotateZ(240deg);
+    }
+}
+
+@keyframes cardLoadingCpu {
+    25% {
+        top: 30px;
+        left: 592.5px;
+        transform: rotateZ(60deg);
+    }
+
+    50% {
+        top: 20px;
+        left: 415px;
+        transform: rotateZ(120deg);
+    }
+
+    75% {
+        top: 10px;
+        left: 237.5px;
+        transform: rotateZ(180deg);
+    }
+
+    100% {
+        top: 0px;
+        left: 60px;
+        transform: rotateZ(240deg);
+    }
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 30%;
+}
+
+.chip1 {
+    margin-bottom: 15px;
+}
+
+.sitDown,
+.cancel {
+    border: 2px solid #C0A86F;
+    border-radius: 50px;
+    padding: 5px;
+    margin-right: 10px;
+    background-color: #e41616;
+    color: #fff;
+    transition: all 0.5s ease 0s;
+}
+
+.sitDown {
+    margin-right: 0;
+}
+
+.sitDown:hover {
+    background-color: #4d0808;
+}
+
+.cancel:hover {
+    box-shadow: 2px 2px white, 4px 4px #C76637;
+}
+
+/* fishkayi animacia */
+.bet {
+    position: relative;
+}
+
+.chipBet {
+    position: absolute;
+    width: 124px;
+    height: 124px;
+    border-radius: 50%;
+    transform: rotateX(60deg);
+}
+
+.chipLoading {
+    position: absolute;
+    top: 220px;
+    left: -380px;
+    width: 124px;
+    height: 124px;
+    border-radius: 50%;
+    animation: chipLoading 0.3s linear 0s;
+}
+
+@keyframes chipLoading {
+    25% {
+        top: 165px;
+        left: -285px;
+    }
+
+    50% {
+        top: 110px;
+        left: -190px;
+    }
+
+    75% {
+        top: 55px;
+        left: -95px;
+    }
+
+    100% {
+        top: 0px;
+        left: 0px;
+    }
+}
+
+.totalBet {
+    font-size: 22px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 150px;
+    min-height: 40px;
+    border: 2px solid #fff;
+    background-color: #312F35;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.chipBet {
+    border-radius: 50%;
+    transform: rotateX(60deg);
+}
+
+/* section commands */
+
+.sectionCommands {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex: 1 1 15%;
+}
+
+.commands {
+    padding: 20px;
+}
+
+.balance {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+    min-height: 40px;
+    border: 2px solid #fff;
+    background-color: #312F35;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.balance span {
+    color: red;
+}
+
+/* **************************** */
+
+.btns {
+    display: flex;
+    flex-direction: column;
+    /* transform: translateX(-137px); */
+}
+
+.btnStand,
+.btnDouble,
+.btnHit {
+    border: 2px solid #C0A86F;
+    border-radius: 50px;
+    padding: 5px;
+    margin-right: 10px;
+    min-width: 100px;
+    font-family: 'Dosis', sans-serif;
+    font-size: clamp(16px, 18px, 20px);
+    font-weight: 300;
+    color: #fff;
+    transition: all 0.5s ease 0s;
+}
+
+.cancel {
+    border: 2px solid #C0A86F;
+    border-radius: 50px;
+    padding: 5px;
+    margin-right: 10px;
+    background-color: #e41616;
+    color: #fff;
+    transition: all 0.5s ease 0s;
+}
+
+.cancel:hover {
+    box-shadow: 2px 2px white, 4px 4px #C76637;
+}
+
+.btnDouble {
+    background-color: #372be9;
+}
+
+/* fishki */
+.chips {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.chips .chip:not(:last-child) {
+    margin-right: -55px;
+}
+
+.chip {
+    width: 124px;
+    height: 124px;
+    border-radius: 50%;
+}
+
+.chip:hover {
+    z-index: 100;
+}
+
+.imgBet,
+.img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: none;
+    transform: scale(0.7);
+    border: 1px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.4s ease 0s;
+}
+
+.imgBet {
+    cursor: auto;
+}
+
+.img:hover {
+    transform: translateY(-5px) scale(0.7);
+    box-shadow: 2px 2px white, 4px 4px #C76637;
+}
+
+.user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.unit {
+    font-weight: 500;
+    margin-right: 15px;
+    min-width: 150px;
+    padding: 10px;
+    color: #0ee9c4;
+    background-color: #616161;
+    border: 3px solid blue;
+
+}
+
+.photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}

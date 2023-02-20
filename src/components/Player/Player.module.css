@@ -1,0 +1,76 @@
+.cards {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cards .card:not(:last-child) {
+    margin-right: 20px;
+}
+
+.sum {
+    font-size: 22px;
+    font-weight: 500;
+    color: #fff;
+    transform: translateY(-20px)
+}
+
+.card {
+    width: 95px;
+    height: 146px;
+    border-radius: 5px;
+    transform: scale(1.2);
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: none;
+    object-position: -25px -25px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+}
+
+.btns button:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+/* bita */
+
+.cardBita {
+    width: 95px;
+    height: 146px;
+    border-radius: 5px;
+    transform: scale(1.2);
+    animation: bita 0.3s linear 0s;
+}
+
+.cards .cardBita:not(:last-child) {
+    margin-right: 20px;
+}
+
+@keyframes bita {
+    25% {
+        transform: scale(1.2) rotateY(90deg)
+    }
+
+    50% {
+        transform: scale(1.2) translateX(-266px) translateY(-60x)
+    }
+
+    75% {
+        transform: scale(1.2) translateX(-533px) translateY(-120px)
+    }
+
+    100% {
+        transform: scale(1.2) translateX(-800px) translateY(-180px)
+    }
+}
