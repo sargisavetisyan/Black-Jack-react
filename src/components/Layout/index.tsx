@@ -42,9 +42,9 @@ export const Layout: React.FC = React.memo((): JSX.Element => {
                                 className={({ isActive }) =>
                                     isActive ? activeClassName : deActiveClassName
                                 }
-                                to="blackgack"
+                                to="blackjack"
                             >
-                                BlackGack
+                                BlackJack
                             </NavLink>
                         </Nav>
                     </Navbar.Collapse>

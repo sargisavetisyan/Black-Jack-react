@@ -1,10 +1,10 @@
-.blackgack {
+.blackjack {
     position: relative;
     width: 100%;
     height: calc(100vh - 63px);
 }
 
-.blackgack img {
+.blackjack img {
     width: 100%;
     height: 100%;
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { gameRule, setOpenModal, setSumPlayer } from "../../features/blackgack/blackgackSlice";
+import { gameRule, setOpenModal, setSumPlayer } from "../../features/blackjack/blackjackSlice";
 import { TypeCard } from "../../types/card";
 import PlayerStyle from './Player.module.css';
 
@@ -10,7 +10,7 @@ interface PlayerProps {
 
 export const Player: React.FC<PlayerProps> = React.memo((loading): JSX.Element => {
     const dispatch = useAppDispatch();
-    const { playerCards, sumPlayer, fromModal } = useAppSelector(state => state.blackGackData)
+    const { playerCards, sumPlayer, fromModal } = useAppSelector(state => state.blackJackData)
 
     const [closeCard, setCloseCard] = useState<boolean>(false)
     const [rotate, setRotate] = useState<boolean>(false)

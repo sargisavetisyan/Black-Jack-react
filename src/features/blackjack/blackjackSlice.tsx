@@ -99,7 +99,7 @@ export const gameRule = {
             let text = 'Draw'
             funDispatch(fun(text))
         } else if (sumPlayer === 21 && sumCpu !== 21) {
-            let text = 'BlackGack'
+            let text = 'BlackJack'
             funDispatch(fun(text))
         } else {  //petq e poxvi
             if (sumCpu === 21 && sumPlayer !== 21) {
@@ -154,7 +154,7 @@ export const gameRule = {
     }
 }
 
-export interface BlackGackInterface {
+export interface BlackJackInterface {
     user: TypeUser,
     bet: TypeCard[],
     totalBet: number,
@@ -169,13 +169,13 @@ export interface BlackGackInterface {
     textModal: string,
 }
 
-const initialState: BlackGackInterface = {
+const initialState: BlackJackInterface = {
     user: {
         id: 0,
         name: 'Saqo',
         surname: 'Avetisyan',
         age: 36,
-        blackgackUnit: 1000
+        blackjackUnit: 1000
     },
     bet: [],
     totalBet: 0,
@@ -190,7 +190,7 @@ const initialState: BlackGackInterface = {
     textModal: '',
 }
 
-export const blackGackSlice = createSlice({
+export const blackJackSlice = createSlice({
     name: 'play',
     initialState,
     reducers: {
@@ -249,10 +249,10 @@ export const blackGackSlice = createSlice({
             }
         },
         setUser(state, action: PayloadAction<number>) {
-            state.user = { ...state.user, blackgackUnit: state.user.blackgackUnit - action.payload }
+            state.user = { ...state.user, blackjackUnit: state.user.blackjackUnit - action.payload }
         },
-        addUserBlackGackUnit(state, action: PayloadAction<number>) {
-            state.user = { ...state.user, blackgackUnit: state.user.blackgackUnit + action.payload }
+        addUserBlackJackUnit(state, action: PayloadAction<number>) {
+            state.user = { ...state.user, blackjackUnit: state.user.blackjackUnit + action.payload }
         },
         setBet(state, action: PayloadAction<TypeCard>) {
             state.bet.push(action.payload)
@@ -275,7 +275,7 @@ export const blackGackSlice = createSlice({
     },
 })
 
-export default blackGackSlice.reducer
+export default blackJackSlice.reducer
 
 export const {
     setDealerCards,
@@ -291,8 +291,8 @@ export const {
     setBet,
     setTotalBet,
     setDouble,
-    addUserBlackGackUnit,
+    addUserBlackJackUnit,
     deleteTotalBet,
     deleteBet,
     setFiska,
-} = blackGackSlice.actions
+} = blackJackSlice.actions

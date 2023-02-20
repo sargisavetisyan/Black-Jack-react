@@ -1,8 +1,8 @@
-import React, { Dispatch, useEffect, useState } from 'react';
+import React, { Dispatch } from 'react';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { desck, setDealerCards, setFromModal, setOpenModal } from '../../features/blackgack/blackgackSlice';
+import { desck, setDealerCards, setFromModal, setOpenModal } from '../../features/blackjack/blackjackSlice';
 import ModalStyle from './Modal.module.css';
 import { TypeCard } from '../../types/card';
 import { Firework } from '../Firework';
@@ -13,9 +13,9 @@ interface ModalWinProps {
     setDoubleBet: Dispatch<boolean>,
 }
 
-export const ModalWin: React.FC<ModalWinProps> = React.memo(({ open, setTransfer, setDoubleBet }) => {
+export const ModalWin: React.FC<ModalWinProps> = React.memo(({ open, setTransfer, setDoubleBet }): JSX.Element => {
     const dispatch = useAppDispatch()
-    const { textModal, dealerCards } = useAppSelector(state => state.blackGackData)
+    const { textModal, dealerCards } = useAppSelector(state => state.blackJackData)
 
     const onCloseModal = () => {
         repeat()
@@ -57,7 +57,7 @@ export const ModalWin: React.FC<ModalWinProps> = React.memo(({ open, setTransfer
                 center
                 animationDuration={800}
             >
-                {(textModal === 'You Won' || textModal === 'BlackGack') ? <>
+                {(textModal === 'You Won' || textModal === 'BlackJack') ? <>
                     <Firework />
                     <div className={ModalStyle.modal}>
                         <h2>{textModal}</h2>

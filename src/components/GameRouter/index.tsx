@@ -1,7 +1,7 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { BlackGack } from "../../pages/BlackGack"
-import { Home } from "../../pages/Home"
-import { Layout } from "../Layout"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BlackJack } from "../../pages/BlackJack";
+import { Home } from "../../pages/Home";
+import { Layout } from "../Layout";
 
 export const GameRouter = () => {
     return (
@@ -9,7 +9,7 @@ export const GameRouter = () => {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route path="" element={<Home />} />
-                    <Route path="blackgack" element={<BlackGack />} />
+                    <Route path="blackjack" element={<BlackJack />} />
                 </Route>
             </Routes>
         </BrowserRouter>

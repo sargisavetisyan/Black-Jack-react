@@ -1,6 +1,6 @@
 import React, { Dispatch, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { gameRule, setCpuCards, setOpenModal, setSumCpu } from "../../features/blackgack/blackgackSlice";
+import { gameRule, setCpuCards, setOpenModal, setSumCpu } from "../../features/blackjack/blackjackSlice";
 import { TypeCard } from "../../types/card";
 import CpuStyle from './Cpu.module.css';
 
@@ -12,7 +12,7 @@ interface CpuProps {
 
 export const Computer: React.FC<CpuProps> = React.memo(({ transfer, loadingDealer, setLoadingDealer }): JSX.Element => {
     const dispatch = useAppDispatch()
-    const { CpuCards, sumCpu, sumPlayer, fromModal, textModal } = useAppSelector(state => state.blackGackData)
+    const { CpuCards, sumCpu, sumPlayer, fromModal, textModal } = useAppSelector(state => state.blackJackData)
 
     const [closeCard, setCloseCard] = useState<boolean>(false)
     const [rotate, setRotate] = useState<boolean>(false)

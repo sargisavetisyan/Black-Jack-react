@@ -1,4 +1,4 @@
-import React, { Dispatch, useEffect, useState } from "react";
+import React, { Dispatch, useEffect } from "react";
 import ConditionsStyle from './Conditions.module.css';
 
 interface ConditionsProps {

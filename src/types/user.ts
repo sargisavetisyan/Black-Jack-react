@@ -3,5 +3,5 @@ export type TypeUser = {
     name: string,
     surname: string,
     age: number,
-    blackgackUnit: number
+    blackjackUnit: number
 }

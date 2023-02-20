@@ -11,7 +11,7 @@
 .game {
     width: 250px;
     height: 250px;
-    background: url(../../images/blackGack.jpg) no-repeat;
+    background: url(../../images/blackJack.jpg) no-repeat;
     background-size: cover;
     border: 2px solid #f0e264;
     transition: all 0.5s ease 0s;

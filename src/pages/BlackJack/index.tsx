@@ -4,19 +4,14 @@ import { GiSoundOn, GiSoundOff, GiExitDoor } from "react-icons/gi";
 import { Computer } from "../../components/Computer";
 import { ModalWin } from "../../components/Modal";
 import { Player } from "../../components/Player";
-import { addUserBlackGackUnit, chips, deleteBet, deleteTotalBet, gameRule, setBet, setCpuCards, setDealerCards, setDouble, setFiska, setFromModal, setNullCpuCards, setNullPlayerCards, setOpenModal, setPlayerCards, setTotalBet, setUser, startStirCards, } from "../../features/blackgack/blackgackSlice";
+import { addUserBlackJackUnit, chips, deleteBet, deleteTotalBet, gameRule, setBet, setCpuCards, setDealerCards, setDouble, setFiska, setFromModal, setNullCpuCards, setNullPlayerCards, setOpenModal, setPlayerCards, setTotalBet, setUser, startStirCards, } from "../../features/blackjack/blackjackSlice";
 import { TypeCard } from "../../types/card";
-import BlackGackStyle from './BlackGack.module.css';
+import BlackJackStyle from './BlackJack.module.css';
 import { Conditions } from "../../components/Conditions";
 
-// const audio = {
-//     kazino: '../../audio/kazino.mp3',
-//     soundfishka: '../../audio/fishka.mp3'
-// }
-
-export const BlackGack: React.FC = React.memo(() => {
+export const BlackJack: React.FC = React.memo((): JSX.Element => {
     const dispatch = useAppDispatch()
-    const { sumPlayer, sumCpu, playerCards, CpuCards, openModal, fromModal, user, bet, totalBet, fishka, textModal } = useAppSelector(state => state.blackGackData)
+    const { sumPlayer, sumCpu, playerCards, CpuCards, openModal, fromModal, user, bet, totalBet, fishka, textModal } = useAppSelector(state => state.blackJackData)
 
     const volumn = useRef<HTMLAudioElement>({} as HTMLAudioElement)
 
@@ -131,7 +126,7 @@ export const BlackGack: React.FC = React.memo(() => {
 
     // 13. ** Մեթոդ որի օգնությամբ չեղարկվում է սկզբնական խաղադրույքը, աշխատում է 6 կետը ** \\
     const cancel = () => {
-        dispatch(addUserBlackGackUnit(totalBet))
+        dispatch(addUserBlackJackUnit(totalBet))
         dispatch(deleteBet())
         dispatch(deleteTotalBet())
         setActiveCancel(false)
@@ -165,7 +160,7 @@ export const BlackGack: React.FC = React.memo(() => {
         setActiveCancel(false)
         setActiveChip(false)
         setActiveHit(true)
-        if (user.blackgackUnit >= totalBet) {
+        if (user.blackjackUnit >= totalBet) {
             setDoubleBet(true)
         }
     }
@@ -252,15 +247,15 @@ export const BlackGack: React.FC = React.memo(() => {
             setloadingCard(false)
             setActiveChip(true)
             setActiveHit(false)
-            dispatch(addUserBlackGackUnit(totalBet))
+            dispatch(addUserBlackJackUnit(totalBet))
             dispatch(deleteTotalBet())
             dispatch(deleteBet())
         }
-        if (textModal === 'You Won' || textModal === 'BlackGack') {
+        if (textModal === 'You Won' || textModal === 'BlackJack') {
             setloadingCard(false)
             setActiveChip(true)
             setActiveHit(false)
-            dispatch(addUserBlackGackUnit(totalBet * 2))
+            dispatch(addUserBlackJackUnit(totalBet * 2))
             dispatch(deleteTotalBet())
             dispatch(deleteBet())
         }
@@ -278,10 +273,10 @@ export const BlackGack: React.FC = React.memo(() => {
             {sound && <audio ref={volumn} autoPlay loop={true} src={require('../../audio/kazino.mp3')} >
             </audio>}
             {start ?
-                <div className={BlackGackStyle.blackgack}>
-                    <img src={require('../../images/blackGack.jpg')} alt='' />
+                <div className={BlackJackStyle.blackjack}>
+                    <img src={require('../../images/blackJack.jpg')} alt='' />
                     <button
-                        className={BlackGackStyle.play}
+                        className={BlackJackStyle.play}
                         onClick={startGame}
                     >
                         Play
@@ -290,46 +285,42 @@ export const BlackGack: React.FC = React.memo(() => {
                     </audio>
                 </div> :
                 <>
-                    {/* <audio autoPlay src={require('../../audio/fishka.mp3')}>
-                    </audio>
-                    {!start && */}
                     <audio autoPlay src={require('../../audio/door.mp3')}>
                     </audio>
-                    {/* } */}
                     <div
                         style={{ height: 'calc(100vh - 63px)' }}  //63-@ navbari -i barcrutyunn e
-                        className={BlackGackStyle.room}
+                        className={BlackJackStyle.room}
                     >
-                        <div className={BlackGackStyle.exit}>
+                        <div className={BlackJackStyle.exit}>
                             <Conditions
                                 time={time}
                                 setTime={setTime}
                                 active={timer}
                             />
                             <button
-                                className={BlackGackStyle.sound}
+                                className={BlackJackStyle.sound}
                                 onClick={soundOnOff}
                             >
                                 {sound ? <GiSoundOn /> : <GiSoundOff />}
                             </button>
                             <button
-                                className={BlackGackStyle.exitDoor}
+                                className={BlackJackStyle.exitDoor}
                                 onClick={exit}
                             >
                                 <GiExitDoor />
                             </button>
                         </div>
-                        <div className={BlackGackStyle.content}>
-                            <div className={BlackGackStyle.dealer}>
+                        <div className={BlackJackStyle.content}>
+                            <div className={BlackJackStyle.dealer}>
                                 <Computer
                                     transfer={transfer}
                                     loadingDealer={loadingDealer}
                                     setLoadingDealer={setLoadingDealer}
                                 />
                                 {loadingDealer &&
-                                    <div className={loadingTwoCard ? `${BlackGackStyle.twoCard}` : `${BlackGackStyle.twoCardCpu}`}>
+                                    <div className={loadingTwoCard ? `${BlackJackStyle.twoCard}` : `${BlackJackStyle.twoCardCpu}`}>
                                         <img
-                                            className={BlackGackStyle.imgDealer}
+                                            className={BlackJackStyle.imgDealer}
                                             src={require('../../images/card.jpg')}
                                             alt=''
                                         />
@@ -343,9 +334,9 @@ export const BlackGack: React.FC = React.memo(() => {
                                     <audio autoPlay loop={true} src={require('../../audio/oun.mp3')}>
                                     </audio>
                                     <div
-                                        className={loadingCard ? `${BlackGackStyle.card}` : `${BlackGackStyle.cardCpu}`}>
+                                        className={loadingCard ? `${BlackJackStyle.card}` : `${BlackJackStyle.cardCpu}`}>
                                         <img
-                                            className={BlackGackStyle.imgDealer}
+                                            className={BlackJackStyle.imgDealer}
                                             src={require('../../images/card.jpg')}
                                             alt=''
                                         />
@@ -354,16 +345,16 @@ export const BlackGack: React.FC = React.memo(() => {
                             </div>
                             <div
                                 style={sitDownBtn ? { justifyContent: 'none' } : { justifyContent: 'space-between' }}
-                                className={BlackGackStyle.player}
+                                className={BlackJackStyle.player}
                             >
-                                <div className={BlackGackStyle.chip1}>
+                                <div className={BlackJackStyle.chip1}>
                                     {sitDownBtn ? <button
-                                        className={BlackGackStyle.sitDown}
+                                        className={BlackJackStyle.sitDown}
                                         onClick={sitDown}
                                     >
                                         Sit down
                                     </button> :
-                                        <div className={BlackGackStyle.bet}>
+                                        <div className={BlackJackStyle.bet}>
                                             <audio autoPlay src={require('../../audio/fhishki.mp3')}>
                                             </audio>
                                             {bet.map((chip: TypeCard, i: number) => {
@@ -371,10 +362,10 @@ export const BlackGack: React.FC = React.memo(() => {
                                                     <div
                                                         key={i}
                                                         style={{ transform: `rotateX(60deg) translateZ(${i + 2 * i + 2}px)` }}
-                                                        className={BlackGackStyle.chipBet}
+                                                        className={BlackJackStyle.chipBet}
                                                     >
                                                         <img
-                                                            className={BlackGackStyle.imgBet}
+                                                            className={BlackJackStyle.imgBet}
                                                             style={{ objectPosition: `${chip.coordinates.x}px ${chip.coordinates.y}px`, }}
                                                             src={require('../../images/chip.jpg')}
                                                             alt=''
@@ -385,10 +376,10 @@ export const BlackGack: React.FC = React.memo(() => {
                                                 )
                                             })}
                                             {loading &&
-                                                <div className={BlackGackStyle.chipLoading}>
+                                                <div className={BlackJackStyle.chipLoading}>
                                                     <img
                                                         style={{ objectPosition: `${fishka.coordinates.x}px ${fishka.coordinates.y}px`, }}
-                                                        className={BlackGackStyle.img}
+                                                        className={BlackJackStyle.img}
                                                         src={require('../../images/chip.jpg')}
                                                         alt=''
                                                     />
@@ -407,25 +398,25 @@ export const BlackGack: React.FC = React.memo(() => {
                             </div>
                             {
                                 !sitDownBtn &&
-                                <div className={BlackGackStyle.sectionCommands}>
-                                    <div className={BlackGackStyle.chips}>
+                                <div className={BlackJackStyle.sectionCommands}>
+                                    <div className={BlackJackStyle.chips}>
                                         {activeCancel && <button
-                                            className={BlackGackStyle.cancel}
+                                            className={BlackJackStyle.cancel}
                                             onClick={cancel}
                                         >
                                             Cancel
                                         </button>
                                         }
                                         {chips.map((chip: TypeCard, i: number) => {
-                                            if (chip.unit <= user.blackgackUnit) {
+                                            if (chip.unit <= user.blackjackUnit) {
                                                 return (
                                                     <div
                                                         key={i}
-                                                        className={BlackGackStyle.chip}
+                                                        className={BlackJackStyle.chip}
                                                         onClick={isBet.bind(null, chip)}
                                                     >
                                                         <img
-                                                            className={BlackGackStyle.img}
+                                                            className={BlackJackStyle.img}
                                                             style={{ objectPosition: `${chip.coordinates.x}px ${chip.coordinates.y}px`, }}
                                                             src={require('../../images/chip.jpg')}
                                                             alt=''
@@ -435,17 +426,17 @@ export const BlackGack: React.FC = React.memo(() => {
                                             }
                                         })}
                                     </div>
-                                    <div className={BlackGackStyle.balance}>
-                                        Balance <span>{user.blackgackUnit} $</span>
+                                    <div className={BlackJackStyle.balance}>
+                                        Balance <span>{user.blackjackUnit} $</span>
                                     </div>
-                                    <div className={BlackGackStyle.totalBet}>
+                                    <div className={BlackJackStyle.totalBet}>
                                         Bet <span>{totalBet} $</span>
                                     </div>
                                     <div
-                                        className={BlackGackStyle.commands}>
+                                        className={BlackJackStyle.commands}>
                                         <button
                                             style={activeGive ? { backgroundColor: '#277701' } : { backgroundColor: '#616161' }}
-                                            className={BlackGackStyle.btnHit}
+                                            className={BlackJackStyle.btnHit}
                                             disabled={activeGive ? false : true}
                                             onClick={givCard}
                                         >
@@ -453,7 +444,7 @@ export const BlackGack: React.FC = React.memo(() => {
                                         </button>
                                         <button
                                             style={activeHit ? { backgroundColor: '#0be215' } : { backgroundColor: '#616161' }}
-                                            className={BlackGackStyle.btnHit}
+                                            className={BlackJackStyle.btnHit}
                                             disabled={!activeHit ? true : false}
                                             onClick={hit}
                                         >
@@ -461,7 +452,7 @@ export const BlackGack: React.FC = React.memo(() => {
                                         </button>
                                         <button
                                             style={activeHit ? { backgroundColor: '#e41616' } : { backgroundColor: '#616161' }}
-                                            className={BlackGackStyle.btnStand}
+                                            className={BlackJackStyle.btnStand}
                                             disabled={!activeHit ? true : false}
                                             onClick={stand}
                                         >
@@ -469,14 +460,14 @@ export const BlackGack: React.FC = React.memo(() => {
                                         </button>
                                         <button
                                             style={doubleBet ? { backgroundColor: '#0fdbe2' } : { backgroundColor: '#616161' }}
-                                            className={BlackGackStyle.btnDouble}
+                                            className={BlackJackStyle.btnDouble}
                                             disabled={!doubleBet ? true : false}
                                             onClick={double}
                                         >
                                             Double
                                         </button>
                                         {/* <button
-                                            className={BlackGackStyle.btnDouble}
+                                            className={BlackJackStyle.btnDouble}
                                             disabled={active ? true : false}
                                             onClick={disabled}
                                         >
